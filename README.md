@@ -1,6 +1,6 @@
-# fivem-typescript-boilerplate
+# fivem-typescript-bridge
 
-A boilerplate for creating FiveM resources with TypeScript.
+A boilerplate for creating FiveM resources with TypeScript that comes with a bridge and functions for multiple common frameworks.
 
 ## Getting Started
 

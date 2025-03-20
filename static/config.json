@@ -1,3 +1,4 @@
 {
-  "EnableNuiCommand": true
+  "EnableNuiCommand": true,
+  "EnableServerTests": true
 }

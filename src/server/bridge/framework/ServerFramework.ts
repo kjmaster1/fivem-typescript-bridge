@@ -22,7 +22,7 @@ export class ServerFramework extends Framework {
 
   getItemCount(source:number, item:string): number {
     if (this.inventory) {
-      return this.inventory.getItemCount(source, item, this);
+      return this.inventory.getItemCount(source, item);
     }
     return 0;
   }
@@ -41,7 +41,7 @@ export class ServerFramework extends Framework {
 
   canCarry(source:number, item:string, count:number): boolean {
     if (this.inventory) {
-      return this.inventory.canCarry(source, item, count);
+      return this.inventory.canCarry(source, item, count, this);
     }
     return false;
   }

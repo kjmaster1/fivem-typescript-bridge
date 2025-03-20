@@ -1,6 +1,6 @@
 # fivem-typescript-bridge
 
-A boilerplate for creating FiveM resources with TypeScript that comes with a bridge and functions for multiple common frameworks.
+A boilerplate for creating FiveM resources with TypeScript that comes with a bridge and functions for multiple common frameworks. Built on top of the Overextended boilerplate found [here](https://github.com/overextended/fivem-typescript-boilerplate)
 
 ## Getting Started
 
@@ -20,10 +20,10 @@ npm install -g pnpm
 
 Initialise your own repository by using one of the options below.
 
-- [Create a new repository](https://github.com/new?template_name=fivem-typescript-boilerplate&template_owner=overextended) using this template.
-- [Download](https://github.com/overextended/fivem-typescript-boilerplate/archive/refs/heads/main.zip) the template directly.
+- [Create a new repository](https://github.com/new?template_name=fivem-typescript-bridge&template_owner=kjmaster1) using this template.
+- [Download](https://github.com/kjmaster1/fivem-typescript-bridge/archive/refs/heads/main.zip) the template directly.
 - Use the [GitHub CLI](https://cli.github.com/).
-  - `gh repo create <name> --template=overextended/fivem-typescript-boilerplate`
+  - `gh repo create <name> --template=kjmaster1/fivem-typescript-bridge`
 
 Navigate to your new directory and execute the following command to install dependencies.
 

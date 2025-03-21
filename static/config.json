@@ -1,5 +1,9 @@
 {
   "EnableNuiCommand": true,
   "EnableServerTests": true,
-  "EnableClientTests": true
+  "EnableClientTests": true,
+  "setup": {
+    "target": "ox_target",
+    "notify": "ox_lib"
+  }
 }

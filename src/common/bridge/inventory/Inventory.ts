@@ -1,4 +1,7 @@
-
 export class Inventory {
-  constructor(readonly name: string) {}
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
 }

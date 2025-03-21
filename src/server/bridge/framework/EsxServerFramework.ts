@@ -1,5 +1,5 @@
 import {ServerFramework} from "./ServerFramework";
-import {ServerInventory} from "~/src/server/bridge/inventory/ServerInventory";
+import {ServerInventory} from "../inventory/ServerInventory";
 
 export interface Esx {
   GetPlayerFromId: (source: number) => unknown

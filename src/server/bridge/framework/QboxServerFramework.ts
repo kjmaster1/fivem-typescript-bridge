@@ -11,6 +11,6 @@ export class QboxServerFramework extends QbCoreServerFramework {
   }
 
   getPlayer(source: number): unknown {
-    return exports.qbx_core.getPlayer(source) as QboxPlayer
+    return exports.qbx_core.GetPlayer(source) as QboxPlayer
   }
 }

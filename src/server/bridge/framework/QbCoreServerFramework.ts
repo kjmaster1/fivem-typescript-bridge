@@ -50,8 +50,8 @@ export class QbCoreServerFramework extends ServerFramework {
 
   QB_CORE: QbCore;
 
-  constructor(readonly name: 'qb' | 'qbx', readonly inventory: ServerInventory) {
-    super(name, inventory);
+  constructor(readonly frameworkName: 'qb' | 'qbx', readonly inventory: ServerInventory) {
+    super(frameworkName, inventory);
     this.QB_CORE = exports['qb-core'].GetCoreObject();
   }
 
@@ -119,7 +119,7 @@ export class QbCoreServerFramework extends ServerFramework {
   addItem(source: number, item: string, count: number, metadata: Record<string, unknown>) {
     if (this.inventory) {
       super.addItem(source, item, count, metadata);
-      if (this.name === 'qb') {
+      if (this.frameworkName === 'qb') {
         const items = this.QB_CORE.Shared.Items
         TriggerClientEvent(this.inventory + ':client:ItemBox', source, items[item], 'add');
       }
@@ -134,7 +134,7 @@ export class QbCoreServerFramework extends ServerFramework {
     if (!player) return;
     if (this.inventory) {
       super.removeItem(source, item, count);
-      if (this.name === 'qb') {
+      if (this.frameworkName === 'qb') {
         const items = this.QB_CORE.Shared.Items
         TriggerClientEvent(this.inventory + ':client:ItemBox', source, items[item], 'remove');
       }

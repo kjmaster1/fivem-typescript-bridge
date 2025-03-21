@@ -1,6 +1,6 @@
 {
-	"name": "fivem-typescript-boilerplate",
-	"author": "Overextended",
+	"name": "fivem-typescript-bridge",
+	"author": "kjmaster1",
 	"version": "0.0.0",
 	"license": "",
 	"description": "",
@@ -17,9 +17,9 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/overextended/fivem-typescript-boilerplate.git"
+		"url": "https://github.com/kjmaster1/fivem-typescript-bridge.git"
 	},
-	"bugs": "https://github.com/overextended/fivem-typescript-boilerplate/issues",
+	"bugs": "https://github.com/kjmaster1/fivem-typescript-bridge/issues",
 	"devDependencies": {
 		"@citizenfx/client": "latest",
 		"@citizenfx/server": "latest",
@@ -40,5 +40,11 @@
 		"@overextended/oxmysql": "^1.4.2",
 		"react": "^18.3.1",
 		"react-dom": "^18.3.1"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"esbuild"
+		]
 	}
 }

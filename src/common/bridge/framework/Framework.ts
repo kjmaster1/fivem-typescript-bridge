@@ -1,5 +1,11 @@
-import {Inventory} from "../inventory/Inventory"
+import {Inventory} from "@common/bridge/inventory/Inventory";
 
 export class Framework {
-  constructor(readonly name: string, readonly inventory: Inventory) {}
+  name: string;
+  inventory: Inventory;
+
+  constructor(name: string, inventory: Inventory) {
+    this.name = name;
+    this.inventory = inventory;
+  }
 }

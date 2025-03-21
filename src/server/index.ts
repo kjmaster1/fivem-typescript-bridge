@@ -1,5 +1,5 @@
 import Config from '@common/config';
-import { Greetings } from '@common/index';
+import { Greetings } from '../common';
 import { addCommand, cache } from '@overextended/ox_lib/server';
 import {ServerFramework} from "./bridge/framework/ServerFramework";
 import {ServerInventory} from "./bridge/inventory/ServerInventory";
@@ -10,6 +10,7 @@ import {EsxServerFramework} from "./bridge/framework/EsxServerFramework";
 import {QboxServerFramework} from "./bridge/framework/QboxServerFramework";
 import {QbCoreServerFramework} from "./bridge/framework/QbCoreServerFramework";
 import {OxCoreServerFramework} from "./bridge/framework/OxCoreServerFramework";
+import {CoreServerInventory} from "./bridge/inventory/CoreServerInventory";
 
 Greetings();
 
@@ -21,7 +22,7 @@ if (Config.EnableNuiCommand) {
   });
 }
 
-export let serverFramework: ServerFramework
+export let serverFramework: ServerFramework;
 export let serverInventory: ServerInventory
 
 if (GetResourceState('ox_inventory') === 'started') {
@@ -37,7 +38,7 @@ if (GetResourceState('ox_inventory') === 'started') {
 } else if (GetResourceState('codem-inventory') === 'started') {
   serverInventory = new ServerInventory('codem-inventory');
 } else if (GetResourceState('core_inventory') === 'started') {
-  serverInventory = new ServerInventory('core_inventory');
+  serverInventory = new CoreServerInventory('core_inventory');
 }
 
 if (GetResourceState('es_extended') === 'started') {

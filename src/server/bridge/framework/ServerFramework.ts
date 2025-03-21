@@ -1,11 +1,12 @@
 import {Framework} from "@common/bridge/framework/Framework";
-import {ServerInventory} from "../inventory/ServerInventory";
+import { ServerInventory } from "../inventory/ServerInventory";
 
 export class ServerFramework extends Framework {
 
-  constructor(readonly name: string, readonly inventory: ServerInventory) {
-    super(name, inventory);
+  declare inventory: ServerInventory;
 
+  constructor(name: string, inventory: ServerInventory) {
+    super(name, inventory);
   }
 
   getPlayer(source:number):unknown {

@@ -97,17 +97,24 @@ export class EsxServerFramework extends ServerFramework {
 
 
   addItem(source: number, item: string, count: number, metadata: Record<string, unknown>) {
-    if (this.inventory) super.addItem(source, item, count, metadata);
-    const player = this.getPlayer(source) as EsxPlayer;
-    if (!player) return 0;
-    return player.addInventoryItem(item, count)
+    if (this.inventory) {
+      super.addItem(source, item, count, metadata);
+    }
+    else {
+      const player = this.getPlayer(source) as EsxPlayer;
+      if (!player) return 0;
+      player.addInventoryItem(item, count)
+    }
   }
 
 
   removeItem(source: number, item: string, count: number) {
-    if (this.inventory) super.removeItem(source, item, count);
-    const player = this.getPlayer(source) as EsxPlayer;
-    if (!player) return 0;
-    player.removeInventoryItem(item, count);
+    if (this.inventory) {
+      super.removeItem(source, item, count);
+    } else {
+      const player = this.getPlayer(source) as EsxPlayer;
+      if (!player) return 0;
+      player.removeInventoryItem(item, count);
+    }
   }
 }

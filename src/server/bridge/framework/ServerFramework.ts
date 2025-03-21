@@ -3,9 +3,7 @@ import { ServerInventory } from "../inventory/ServerInventory";
 
 export class ServerFramework extends Framework {
 
-  declare inventory: ServerInventory;
-
-  constructor(name: string, inventory: ServerInventory) {
+  constructor(readonly name: string, readonly inventory: ServerInventory) {
     super(name, inventory);
   }
 
@@ -49,13 +47,13 @@ export class ServerFramework extends Framework {
 
   addItem(source:number, item:string, count:number, metadata:Record<string, unknown>):void {
     if (this.inventory) {
-      return this.inventory.addItem(source, item, count, metadata);
+      this.inventory.addItem(source, item, count, metadata);
     }
   }
 
   removeItem(source:number, item:string, count:number):void {
     if (this.inventory) {
-      return this.inventory.removeItem(source, item, count);
+      this.inventory.removeItem(source, item, count);
     }
   }
 }

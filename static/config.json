@@ -1,4 +1,5 @@
 {
   "EnableNuiCommand": true,
-  "EnableServerTests": true
+  "EnableServerTests": true,
+  "EnableClientTests": true
 }

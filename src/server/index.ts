@@ -22,33 +22,38 @@ if (Config.EnableNuiCommand) {
   });
 }
 
-export let serverFramework: ServerFramework;
-export let serverInventory: ServerInventory
+const serverInventory: ServerInventory = initializeServerInventory();
+export const serverFramework: ServerFramework = initializeServerFramework();
 
-if (GetResourceState('ox_inventory') === 'started') {
-  serverInventory = new OxServerInventory('ox_inventory');
-} else if (GetResourceState("qb-inventory") === 'started') {
-  serverInventory = new QbServerInventory('qb-inventory');
-} else if (GetResourceState('qs-inventory') === 'started') {
-  serverInventory = new ServerInventory('qs-inventory');
-} else if (GetResourceState('ps-inventory') === 'started') {
-  serverInventory = new PsServerInventory('qs-inventory');
-} else if (GetResourceState('origen_inventory') === 'started') {
-  serverInventory = new ServerInventory('origen_inventory');
-} else if (GetResourceState('codem-inventory') === 'started') {
-  serverInventory = new ServerInventory('codem-inventory');
-} else if (GetResourceState('core_inventory') === 'started') {
-  serverInventory = new CoreServerInventory('core_inventory');
+function initializeServerInventory(): ServerInventory {
+  if (GetResourceState('ox_inventory') === 'started') {
+    return new OxServerInventory('ox_inventory');
+  } else if (GetResourceState("qb-inventory") === 'started') {
+    return new QbServerInventory('qb-inventory');
+  } else if (GetResourceState('qs-inventory') === 'started') {
+    return new ServerInventory('qs-inventory');
+  } else if (GetResourceState('ps-inventory') === 'started') {
+    return new PsServerInventory('qs-inventory');
+  } else if (GetResourceState('origen_inventory') === 'started') {
+    return new ServerInventory('origen_inventory');
+  } else if (GetResourceState('codem-inventory') === 'started') {
+    return new ServerInventory('codem-inventory');
+  } else if (GetResourceState('core_inventory') === 'started') {
+    return new CoreServerInventory('core_inventory');
+  }
+  return undefined;
 }
 
-if (GetResourceState('es_extended') === 'started') {
-  serverFramework = new EsxServerFramework(serverInventory);
-} else if (GetResourceState('qbx_core') === 'started') {
-  serverFramework = new QboxServerFramework(serverInventory);
-} else if (GetResourceState('qb-core') === 'started') {
-  serverFramework = new QbCoreServerFramework('qb', serverInventory);
-} else if (GetResourceState('ox_core') === 'started') {
-  serverFramework = new OxCoreServerFramework(serverInventory);
+function initializeServerFramework(): ServerFramework {
+  if (GetResourceState('es_extended') === 'started') {
+    return new EsxServerFramework(serverInventory);
+  } else if (GetResourceState('qbx_core') === 'started') {
+    return  new QboxServerFramework(serverInventory);
+  } else if (GetResourceState('qb-core') === 'started') {
+    return  new QbCoreServerFramework('qb', serverInventory);
+  } else if (GetResourceState('ox_core') === 'started') {
+    return  new OxCoreServerFramework(serverInventory);
+  }
 }
 
 if (Config.EnableServerTests) {
@@ -91,8 +96,8 @@ if (Config.EnableServerTests) {
     if (!playerId) return;
     if (args[0] !== undefined && typeof args[0] === 'string') {
       if (args[0] === 'bank' || args[0] == 'cash' || args[0] === 'money') {
-        if (args[1] !== undefined && typeof args[1] === 'number') {
-          serverFramework.addMoney(playerId, args[0], args[1])
+        if (args[1] !== undefined && typeof Number(args[1]) === 'number') {
+          serverFramework.addMoney(playerId, args[0], Number(args[1]))
         }
       }
     }
@@ -101,8 +106,8 @@ if (Config.EnableServerTests) {
     if (!playerId) return;
     if (args[0] !== undefined && typeof args[0] === 'string') {
       if (args[0] === 'bank' || args[0] == 'cash' || args[0] === 'money') {
-        if (args[1] !== undefined && typeof args[1] === 'number') {
-          serverFramework.removeMoney(playerId, args[0], args[1])
+        if (args[1] !== undefined && typeof Number(args[1]) === 'number') {
+          serverFramework.removeMoney(playerId, args[0], Number(args[1]))
         }
       }
     }
@@ -110,24 +115,24 @@ if (Config.EnableServerTests) {
   addCommand('canCarry', async (playerId, args) => {
     if (!playerId) return;
     if (args[0] !== undefined && typeof args[0] === 'string') {
-      if (args[1] !== undefined && typeof args[1] === 'number') {
-        console.log(serverFramework.canCarry(playerId, args[0], args[1]))
+      if (args[1] !== undefined && typeof Number(args[1]) === 'number') {
+        console.log(serverFramework.canCarry(playerId, args[0], Number(args[1])))
       }
     }
   })
-  addCommand('addItem', async (playerId, args) => {
+  addCommand('bridgeAddItem', async (playerId, args) => {
     if (!playerId) return;
     if (args[0] !== undefined && typeof args[0] === 'string') {
-      if (args[1] !== undefined && typeof args[1] === 'number') {
-        serverFramework.addItem(playerId, args[0], args[1], {});
+      if (args[1] !== undefined && typeof Number(args[1]) === 'number') {
+        serverFramework.addItem(playerId, args[0], Number(args[1]), {});
       }
     }
   })
-  addCommand('removeItem', async (playerId, args) => {
+  addCommand('bridgeRemoveItem', async (playerId, args) => {
     if (!playerId) return;
     if (args[0] !== undefined && typeof args[0] === 'string') {
-      if (args[1] !== undefined && typeof args[1] === 'number') {
-        serverFramework.removeItem(playerId, args[0], args[1])
+      if (args[1] !== undefined && typeof Number(args[1]) === 'number') {
+        serverFramework.removeItem(playerId, args[0], Number(args[1]))
       }
     }
   })
